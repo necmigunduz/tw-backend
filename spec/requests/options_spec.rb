@@ -63,7 +63,7 @@ end
 
 # Test suite for PUT /questions/:question_id/options
 describe 'POST /questions/:question_id/options' do
-  let(:valid_attributes) { { name: 'Visit Narnia', done: false } }
+  let(:valid_attributes) { { o_text: 'Eight years old!', score: 1 } }
 
   context 'when request attributes are valid' do
     before { post "/questions/#{question_id}/options", params: valid_attributes }
@@ -81,14 +81,14 @@ describe 'POST /questions/:question_id/options' do
     end
 
     it 'returns a failure message' do
-      expect(response.body).to match(/Validation failed: Name can't be blank/)
+      expect(response.body).to match(/Validation failed: O text can't be blank, Score can't be blank/)
     end
   end
 end
 
 # Test suite for PUT /questions/:question_id/options/:id
 describe 'PUT /questions/:question_id/options/:id' do
-  let(:valid_attributes) { { name: 'Mozart' } }
+  let(:valid_attributes) { { o_text: 'Mozart' } }
 
   before { put "/questions/#{question_id}/options/#{id}", params: valid_attributes }
 
@@ -99,7 +99,7 @@ describe 'PUT /questions/:question_id/options/:id' do
 
     it 'updates the option' do
       updated_option = Option.find(id)
-      expect(updated_option.name).to match(/Mozart/)
+      expect(updated_option.o_text).to match(/Mozart/)
     end
   end
 
