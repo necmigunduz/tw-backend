@@ -1,6 +1,6 @@
 FactoryBot.define do
-    factory :item do
-      o_text { Faker::StarWars.character }
+    factory :option do
+      o_text { Faker::Lorem.word }
       score { Faker::Number.number(digits: 10) }
       question_id nil
     end
