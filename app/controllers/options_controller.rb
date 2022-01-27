@@ -4,31 +4,33 @@ class OptionsController < ApplicationController
   
     # GET /questions/:question_id/options
     def index
-      json_response(@question.options)
+      options = @question.options
+      render json: OptionSerializer.new(options).serialized_json
     end
   
     # GET /questions/:question_id/options/:id
     def show
-      json_response(@option)
+      option = @option
+      render json: OptionSerializer.new(option).serialized_json
     end
   
     # POST /questions/:question_id/options
-    def create
-      @question.options.create!(option_params)
-      json_response(@question, :created)
-    end
+    # def create
+    #   @question.options.create!(option_params)
+    #   json_response(@question, :created)
+    # end
   
-    # PUT /questions/:question_id/options/:id
-    def update
-      @option.update(option_params)
-      head :no_content
-    end
+    # # PUT /questions/:question_id/options/:id
+    # def update
+    #   @option.update(option_params)
+    #   head :no_content
+    # end
   
-    # DELETE /questions/:question_id/options/:id
-    def destroy
-      @option.destroy
-      head :no_content
-    end
+    # # DELETE /questions/:question_id/options/:id
+    # def destroy
+    #   @option.destroy
+    #   head :no_content
+    # end
   
     private
   
